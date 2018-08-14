@@ -7,6 +7,7 @@ type Query {
 
 type Mutation {
     post(userId: ID!, text: String!): Comment
+    deleteComment(commentId: ID!): Comment
     signup(username: String!, password: String!): AuthPayload
     login(username: String!, password: String!): AuthPayload
 }
