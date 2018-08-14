@@ -1,0 +1,34 @@
+# import CommentSubscriptionPayload, DateTime from "./generated/prisma.graphql"
+
+type Query {
+    user(username: String!): User
+    comments: [Comment!]!
+}
+
+type Mutation {
+    post(userId: ID!, text: String!): Comment
+    signup(username: String!, password: String!): AuthPayload
+    login(username: String!, password: String!): AuthPayload
+}
+
+type Subscription {
+    newComment: CommentSubscriptionPayload
+}
+
+type AuthPayload {
+    token: String
+    user: User
+}
+
+type User {
+    id: ID!
+    createdAt: DateTime!
+    username: String!
+}
+
+type Comment {
+    id: ID!
+    createdAt: DateTime!
+    recipient: User!
+    text: String!
+}

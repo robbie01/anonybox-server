@@ -1,0 +1,14 @@
+type User {
+    id: ID! @unique
+    createdAt: DateTime!
+    username: String! @unique
+    password: String!
+    comments: [Comment!]!
+}
+
+type Comment {
+    id: ID! @unique
+    createdAt: DateTime!
+    recipient: User!
+    text: String!
+}
